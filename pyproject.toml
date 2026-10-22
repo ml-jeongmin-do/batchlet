@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "batchlet"
+version = "0.1.0"
+description = "Dependency-free asyncio microbatching with item and token budgets"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+grpc = ["grpcio>=1.60,<2"]
+dev = ["build>=1", "mypy>=1.10"]
+
+[project.urls]
+Repository = "https://github.com/ml-jeongmin-do/batchlet"
+Issues = "https://github.com/ml-jeongmin-do/batchlet/issues"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/batchlet"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+batchlet = ["py.typed"]
