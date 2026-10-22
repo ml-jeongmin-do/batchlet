@@ -1,10 +1,4 @@
-"""Runnable gRPC demo with two localhost mock nodes; no GPU or protoc required.
-
-Install: pip install -e '.[grpc]'
-Run: python examples/grpc_demo.py
-JSON is the demo wire serializer. Production generated Protobuf stubs work
-through the same grpc_processor adapter; see README.md for that example.
-"""
+"""Send batches to two local gRPC nodes using JSON serialization."""
 import asyncio
 import itertools
 import json
@@ -36,7 +30,7 @@ async def main():
                         request_serializer=lambda x: json.dumps(x).encode(),
                         response_deserializer=json.loads))
 
-        # Only an example of caller-owned routing. No node management in the library.
+        # Route each batch to the next node.
         cycle = itertools.cycle(rpcs)
         def choose_rpc(request, **kwargs):
             return next(cycle)(request, **kwargs)

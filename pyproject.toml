@@ -1,12 +1,14 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "batchlet"
 version = "0.1.0"
-description = "Dependency-free asyncio microbatching with item and token budgets"
+description = "Async batching with item and token budgets"
 readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
 dependencies = []
 classifiers = [
@@ -17,7 +19,9 @@ classifiers = [
 
 [project.optional-dependencies]
 grpc = ["grpcio>=1.60,<2"]
-dev = ["build>=1", "mypy>=1.10"]
+
+[dependency-groups]
+dev = ["mypy>=1.10"]
 
 [project.urls]
 Repository = "https://github.com/ml-jeongmin-do/batchlet"

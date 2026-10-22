@@ -1,7 +1,6 @@
-"""An HTTP callback to an existing batch endpoint (stdlib only).
+"""Send batches to an HTTP endpoint.
 
-Expected contract: POST {"inputs": [...]} -> {"outputs": [...]} in input order.
-Adjust this callback to your server's contract. Not an HTTP server or router.
+POST {"inputs": [...]} -> {"outputs": [...]} in input order.
 """
 import asyncio
 import json
@@ -20,7 +19,6 @@ def call_remote(items):
 
 
 async def main():
-    # The endpoint may be a GPU worker or an existing load-balanced service.
     async with AsyncBatcher(threaded(call_remote), policy=BatchPolicy(max_items=8),
                             max_concurrent_batches=2) as batcher:
         print(await asyncio.gather(*(batcher.submit(text) for text in ['hello', 'world'])))

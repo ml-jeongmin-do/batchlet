@@ -1,11 +1,10 @@
-"""Run: python examples/local.py (no FastAPI, PyTorch, or network required)."""
+"""Batch a blocking function with a padded token budget."""
 import asyncio
 
 from batchlet import AsyncBatcher, BatchPolicy, threaded
 
 
 def encode_batch(token_sequences: list[list[int]]) -> list[int]:
-    # Replace with blocking model inference; keep input/output order identical.
     print('batch lengths:', [len(ids) for ids in token_sequences])
     return [sum(ids) for ids in token_sequences]
 

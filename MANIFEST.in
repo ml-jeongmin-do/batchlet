@@ -1,2 +1,5 @@
 recursive-include examples *.py
 recursive-include tests *.py
+include CONTRIBUTING.md
+include .python-version
+include uv.lock
