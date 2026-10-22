@@ -8,18 +8,15 @@ Connect a local function, HTTP endpoint, or gRPC service.
 ## Install
 
 Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/getting-started/installation/).
-Install from source until the package is published to PyPI:
 
 ```bash
-git clone git@github.com:ml-jeongmin-do/batchlet.git
-cd batchlet
-uv sync --locked --no-dev
+uv add batchlet
 ```
 
-From another uv project:
+For gRPC:
 
 ```bash
-uv add --editable /path/to/batchlet
+uv add 'batchlet[grpc]'
 ```
 
 ## Usage
